@@ -1,0 +1,37 @@
+<html>
+<body>
+
+<h1>change cmake version of ROS</h1>
+
+<h3>ycQian 2019/12/17</h3>
+
+<h2>cause</h2>
+Today I got an Azure Kinect DK, and wanted to use it in ROS. However, the SDK of the camera required cmake later than 3.10, which is greater than the cmake I used to build and install ROS Kinetic, 3.5.1. To fix this, I installed cmake 3.15.6 from source code, but the catkin_make sestronged to still use the older cmake. So my ROS might somehow 'bind' to the cmake 3.5.1. I searched the Internet and found nothing about changing cmake version of ROS.
+
+<h2>solution</h2>
+<ol>
+
+    <li>ran <strong>whereis cmake</strong>, the output was</li>
+    <blockquote>
+    cmake: /usr/bin/cmake /usr/lib/cmake /usr/local/bin/cmake /usr/local/lib/cmake
+    </blockquote>
+
+    <li>checked the cmakes' version by <strong>/usr/bin/cmake --version</strong> and <strong>/usr/local/bin/cmake --version</strong></li>
+
+    <li>copied the 3.15.6 cmake to replace the 3.5.1 cmake: <strong>sudo cp /usr/local/bin/cmake /usr/bin/</strong></li>
+
+    <li>catkin_make again, failed. Checked the error message:</li>
+    <blockquote>
+    CMake Error: Could not find CMAKE_ROOT !!!
+    CMake has most likely not been installed correctly.
+    Modules directory not found in
+    /usr/share/cmake-3.15
+    </blockquote>
+
+    <li>renamed /usr/share/cmake-3.5 to /usr/share/cmake-3.15: <strong>mv /usr/share/cmake-3.5 /usr/share/cmake-3.15</strong></li>
+
+    <li>now the ROS uses cmake 3.15.6 to build nodes!</li>
+
+</ol>
+</body>
+</html>
