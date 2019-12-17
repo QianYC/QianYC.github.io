@@ -11,7 +11,7 @@ Today I got an Azure Kinect DK, and wanted to use it in ROS. However, the SDK of
 cmake: /usr/bin/cmake /usr/lib/cmake /usr/local/bin/cmake /usr/local/lib/cmake
 ```
 
-2. checked the cmakes' version by **/usr/bin/cmake --version** and **/usr/local/bin/cmake**
+2. checked the cmakes' version by **/usr/bin/cmake --version** and **/usr/local/bin/cmake --version**
 
 3. copied the 3.15.6 cmake to replace the 3.5.1 cmake: **sudo cp /usr/local/bin/cmake /usr/bin/**
 
