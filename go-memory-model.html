@@ -47,14 +47,14 @@
 <li>有缓存的channel可以实现semaphore语义。</li>
 </ol>
 
-<p4>Mutex & RWMutex</p4>
+<h4>Mutex & RWMutex</h4>
 <ol>
 <li>对于Mutex和RWMutex，n&lt;m，第n个Unlock先于第m个Lock返回。</li>
 <li>对于RWMutex调用RLock，那么存在一个n，满足RLock后于第n个Unlock调用而先于第n+1个Lock。</li>
 </ol>
 <strong>很奇怪，感觉go的mutex语义与c++的mutex略有不同，在c++中unlock一个当前线程未锁定的mutex，这个行为是未定义的。</strong>
 
-<p4>Once</p4>
+<h4>Once</h4>
 <ol>
 <li>Once提供了一个安全的在多协程中初始化资源的机制。多个协程调用once.Do(f)方法，f只会被一个协程调用，其他协程则会阻塞直到f返回。</li>
 </ol>
